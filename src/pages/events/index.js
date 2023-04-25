@@ -1,8 +1,9 @@
-import { HomePage } from "@frontEnd/container/HomePage";
+import HomePage from "@frontEnd/container/HomePage";
 import Head from "next/head";
-import { ToastContainer } from "react-toastify";
+import { getAllEvents } from "@frontEnd/api";
 
-const AllEvents = () => {
+const AllEvents = ({ events }) => {
+  console.log(events);
   return (
     <>
       <Head>
@@ -13,10 +14,33 @@ const AllEvents = () => {
       </Head>
       <main>
         <HomePage />
-        <ToastContainer position="top-left" autoClose={3000} theme="dark" />
       </main>
     </>
   );
 };
+
+export async function getStaticProps(context) {
+  const response = await fetch(
+    "https://next-ssr-1c859-default-rtdb.firebaseio.com/events.json"
+  );
+  const data = await response.json();
+  const events = [];
+  for (const key in data) {
+    events.push({
+      id: key,
+      ...data[key],
+    });
+  }
+  console.log("data : ", events);
+
+  return {
+    props: {
+      events: events,
+      fallback: false,
+      revalidate: 1800,
+      // wrap the returned object in an array
+    },
+  };
+}
 
 export default AllEvents;
