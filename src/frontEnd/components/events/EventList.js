@@ -3,8 +3,11 @@ import { Grid } from "@mui/material";
 
 import { DivLayout } from "@frontEnd/helpers";
 import EventItem from "./EventItem";
+import { getAllEvents } from "@frontEnd/api";
+// import { getAllEvents } from "@/data";
 
 export const EventList = ({ list }) => {
+  const demo = getAllEvents();
   return (
     <DivLayout>
       <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
