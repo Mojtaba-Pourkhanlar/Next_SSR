@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@frontEnd/*":["./src/frontEnd/*"],
-      "@public/*": ["./public/*"],
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   }
 }
