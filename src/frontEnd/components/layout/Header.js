@@ -32,7 +32,7 @@ export const Header = () => {
                     color: "#74dacc",
                   }}
                 >
-                  Next Routing
+                  Next.js Server Side Rendering
                 </Typography>
               </Link>
             </Grid>
