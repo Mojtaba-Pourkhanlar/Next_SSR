@@ -10,5 +10,6 @@ export async function getFeaturedEvents() {
 }
 
 export async function getEventById(id) {
+  const allFeature = await getAllEvents();
   return allFeature.find((event) => event.id === id);
 }
